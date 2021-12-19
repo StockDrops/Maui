@@ -1,4 +1,5 @@
-﻿using ObjCRuntime;
+﻿using System;
+using ObjCRuntime;
 using UIKit;
 
 namespace CommunityToolkit.Maui.Core.Views;
