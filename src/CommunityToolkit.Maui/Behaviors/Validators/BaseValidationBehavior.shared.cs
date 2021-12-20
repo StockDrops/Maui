@@ -271,7 +271,7 @@ public abstract class BaseValidationBehavior : BaseBehavior<VisualElement>
 	static object GetDefaultForceValidateCommand(BindableObject bindable)
 		=> ((BaseValidationBehavior)bindable).DefaultForceValidateCommand;
 
-	//static object GetDefaultValuePropertyName(BindableObject bindable) //TODO: replace this with a GetDefaultBinding?
+	//static object GetDefaultValuePropertyName(BindableObject bindable) //TODO: replace this with a GetDefaultBinding? Maybe?
 	//	=> ((BaseValidationBehavior)bindable).DefaultValuePropertyName;
 
 	void OnIsValidPropertyChanged() => IsNotValid = !IsValid;
