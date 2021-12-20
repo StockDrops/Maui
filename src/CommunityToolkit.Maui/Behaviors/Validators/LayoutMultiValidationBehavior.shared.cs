@@ -9,11 +9,10 @@ using Microsoft.Maui.Controls;
 namespace CommunityToolkit.Maui.Behaviors;
 
 /// <summary>
-/// The <see cref="LayoutMultiValidationBehavior"/> is a behavior that allows the user to combine multiple validators by applying it to a parent layout.
-/// The behavior will look for all the view's ValidationBehavior children and check the IsValid. For example, an <see cref="Entry"/> control can be styled differently depending on whether a valid or an invalid text input is provided. By allowing the user to chain multiple existing validators together, it offers a high degree of customizability when it comes to validation. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
+/// The <see cref="ParallelMultiValidationBehavior"/> is a behavior that allows the user to combine multiple validators to validate text input depending on specified parameters. For example, an <see cref="Entry"/> control can be styled differently depending on whether a valid or an invalid text input is provided. By allowing the user to chain multiple existing validators together, it offers a high degree of customizability when it comes to validation. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
 [ContentProperty(nameof(Children))]
-public class LayoutMultiValidationBehavior : ValidationBehavior
+public class ParallelMultiValidationBehavior : ValidationBehavior
 {
 	/// <summary>
 	/// Backing BindableProperty for the <see cref="Errors"/> property.
@@ -32,7 +31,7 @@ public class LayoutMultiValidationBehavior : ValidationBehavior
 	/// <summary>
 	/// Constructor for this behavior.
 	/// </summary>
-	public LayoutMultiValidationBehavior() => _children.CollectionChanged += OnChildrenCollectionChanged;
+	public ParallelMultiValidationBehavior() => _children.CollectionChanged += OnChildrenCollectionChanged;
 
 	/// <summary>
 	/// All child behaviors that are part of this <see cref="ParallelMultiValidationBehavior"/>. This is a bindable property.
