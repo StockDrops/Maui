@@ -43,13 +43,17 @@ public class LayoutValidationBehavior : BaseValidationBehavior
 	{
 		Behaviors = new List<BaseValidationBehavior>();
 		DefaultVariableMultiValueConverter = new VariableMultiValueConverter { ConditionType = MultiBindingCondition.All };
+	}
+	static object CreateDefaultConverter(BindableObject bindable) => ((LayoutValidationBehavior)bindable).DefaultVariableMultiValueConverter;
+
+	protected override void OnAttachedTo(BindableObject bindable)
+	{
+		base.OnAttachedTo(bindable);
 		if (View != null)
 		{
 			View.DescendantAdded += OnDescendantAdded;
 		}
 	}
-	static object CreateDefaultConverter(BindableObject bindable) => ((LayoutValidationBehavior)bindable).DefaultVariableMultiValueConverter;
-
 	///<inheritdoc/>
 	protected override BindingBase CreateBinding()
 	{
