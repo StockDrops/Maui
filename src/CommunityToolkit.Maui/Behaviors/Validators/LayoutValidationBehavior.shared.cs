@@ -46,6 +46,7 @@ public class LayoutValidationBehavior : BaseValidationBehavior
 	}
 	static object CreateDefaultConverter(BindableObject bindable) => ((LayoutValidationBehavior)bindable).DefaultVariableMultiValueConverter;
 
+	///<inheritdoc/>
 	protected override void OnAttachedTo(BindableObject bindable)
 	{
 		base.OnAttachedTo(bindable);
@@ -78,6 +79,8 @@ public class LayoutValidationBehavior : BaseValidationBehavior
 		{
 			var validations = entry.Behaviors.Where(b => b is BaseValidationBehavior).Select(b=> (BaseValidationBehavior)b).ToList();
 			Behaviors.AddRange(validations);
+			//re configure the binding because if we don't the bindings will not have this new element
+			ConfigureValueBinding();
 		}
 	}
 	///<inheritdoc/>
