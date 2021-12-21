@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Maui.Converters;
 using Microsoft.Maui.Controls;
 
-namespace CommunityToolkit.Maui.Behaviors.Validators;
+namespace CommunityToolkit.Maui.Behaviors;
 /// <summary>
 /// Class inteaded to group validators and combine all validators into a single validator.
 /// This one works with multiple entries.
