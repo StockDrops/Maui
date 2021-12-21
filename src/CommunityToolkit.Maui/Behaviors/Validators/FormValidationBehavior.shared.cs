@@ -15,6 +15,7 @@ namespace CommunityToolkit.Maui.Behaviors.Validators;
 /// </summary>
 public class FormValidationBehavior : ValidationBehavior
 {
+	BindingBase? _defaultBinding;
 	///<inheritdoc/>
 	public FormValidationBehavior() : base()
 	{
@@ -95,13 +96,18 @@ public class FormValidationBehavior : ValidationBehavior
 		
 	}
 	/// <summary>
-	/// Method that configures the binding to the ValueProperty
+	/// Method that configures the binding to the ValueProperty.
+	/// You can override this for further customization.
+	/// BTW you also see in here the benefits of the new Base if you prefer that route.
+	/// This function is almost exactly OnValuePropertyNamePropertyChanged from <see cref="ValidationBehavior.OnValuePropertyNamePropertyChanged()"/>. 
+	/// The new base allow just this to be directly modified. Both approaches work though.
 	/// </summary>
-	protected void ConfigureValueBinding()
+	protected virtual void ConfigureValueBinding()
 	{
-		if (IsBound(ValueProperty))
+		if (IsBound(ValueProperty, _defaultBinding))
 			return;
-		SetBinding(ValueProperty, CreateBinding());
+		_defaultBinding = CreateBinding();
+		SetBinding(ValueProperty, _defaultBinding);
 	}
 	/// <summary>
 	/// Creates an automatic binding to the behaviors that have have set Required = "True"
